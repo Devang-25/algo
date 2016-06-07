@@ -34,9 +34,10 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
             return false;
         @SuppressWarnings("unchecked")
         Node2<A> n = (Node2<A>) o;
-        if (n == null || key != n.key)
-            return false;
-        return left == n.getLeft() && right == n.getRight();
+        if (this.key.compareTo(n.getKey()) == 0) {
+            return true;
+        }
+        return false;
     }
 
     @Override
