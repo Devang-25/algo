@@ -69,10 +69,6 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
         return ((Object) this).hashCode();
     }
 
-	/*
-     * getters / setters
-	 */
-
     public A getKey() {
         return key;
     }
@@ -99,10 +95,6 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
         return this.right;
     }
 
-	/*
-     * aliases (for a comprehensible use as a linked list)
-	 */
-
     public Node2<A> getPrev() {
         return this.getLeft();
     }
@@ -118,10 +110,6 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
     public Node2<A> setNext(Node2<A> right) {
         return this.setRight(right);
     }
-
-	/*
-     * iterators
-	 */
 
     public Iterator<A> inOrderIterator() {
         return new InOrderIterator<A>(this);
