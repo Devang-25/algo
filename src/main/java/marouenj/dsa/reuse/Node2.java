@@ -64,6 +64,7 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
         return hash;
     }
 
+    @SuppressWarnings("RedundantCast")
     public int address() {
         return ((Object) this).hashCode();
     }
