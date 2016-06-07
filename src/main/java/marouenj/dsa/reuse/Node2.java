@@ -59,7 +59,7 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
         if (right != null) {
             z *= right.hashCode();
         }
-        
+
         hash = x + y + z;
         return hash;
     }
