@@ -28,16 +28,18 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Node2))
-            return false;
-        @SuppressWarnings("unchecked")
-        Node2<A> n = (Node2<A>) o;
-        if (this.key.compareTo(n.getKey()) == 0) {
+        if (this == o) {
             return true;
         }
-        return false;
+
+        if (!(o instanceof Node2)) {
+            return false;
+        }
+
+        @SuppressWarnings("unchecked")
+        Node2<A> that = (Node2<A>) o;
+
+        return this.key.compareTo(that.getKey()) == 0;
     }
 
     @Override
