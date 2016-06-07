@@ -118,50 +118,37 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
     private class InOrderIterator<B extends Comparable<B>> implements Iterator<B> {
 
         private Node2<B> curr;
-        private Node2<B> next;
-        private boolean consumed;
         private Stack<Node2<B>> stack;
 
         public InOrderIterator(Node2<B> root) {
             this.curr = root;
-            this.next = null;
-            this.consumed = true;
             this.stack = new Stack<>();
         }
 
         @Override
         public boolean hasNext() {
-            if (!consumed) {
-                return true;
-            }
-
-            next = null;
-
-            while (curr != null || !stack.empty()) {
-                if (curr != null) {
-                    stack.push(curr);
-                    curr = curr.getLeft();
-                } else {
-                    curr = stack.pop();
-                    next = curr;
-                    consumed = false;
-                    curr = curr.getRight();
-                    break;
-                }
-            }
-
-            if (next != null) {
-                return true;
-            }
-
-            return false;
+            return curr != null || !stack.empty();
         }
 
         @Override
         public B next() {
-            consumed = true;
-            return next.getKey();
-        }
+            while (true) {
+                if (curr == null) {
+                    curr = stack.pop();
+                    Node2<B> t = curr;
+                    curr = curr.getRight();
+                    return t.getKey();
+                }
 
+                if (curr.getLeft() != null) {
+                    stack.push(curr);
+                    curr = curr.getLeft();
+                } else {
+                    Node2<B> t = curr;
+                    curr = curr.getRight();
+                    return t.getKey();
+                }
+            }
+        }
     }
 }
