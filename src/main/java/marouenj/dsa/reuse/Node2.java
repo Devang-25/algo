@@ -44,16 +44,22 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
 
     @Override
     public int hashCode() {
-        if (hash != null)
+        if (hash != null) {
             return hash;
+        }
 
         int x = 3 * key.hashCode();
+
         int y = 5;
-        if (left != null)
+        if (left != null) {
             y *= left.hashCode();
+        }
+
         int z = 7;
-        if (right != null)
+        if (right != null) {
             z *= right.hashCode();
+        }
+        
         hash = x + y + z;
         return hash;
     }
