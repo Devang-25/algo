@@ -3,10 +3,9 @@ package algo.reuse;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import marouenj.dsa.reuse.Arrays;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import algo.reuse.Arrays;
 
 public class ArraysTest {
 

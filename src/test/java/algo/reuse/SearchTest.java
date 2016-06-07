@@ -1,5 +1,6 @@
 package algo.reuse;
 
+import marouenj.dsa.reuse.Search;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

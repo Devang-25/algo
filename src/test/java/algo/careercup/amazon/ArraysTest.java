@@ -3,6 +3,7 @@ package algo.careercup.amazon;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import marouenj.dsa.careercup.amazon.Arrays;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

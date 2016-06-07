@@ -3,6 +3,9 @@ package algo.reuse;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import marouenj.dsa.reuse.LinkedList;
+import marouenj.dsa.reuse.Node2;
+import marouenj.dsa.reuse.Pointer;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

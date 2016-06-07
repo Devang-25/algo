@@ -4,6 +4,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Iterator;
 
+import marouenj.dsa.reuse.Node2;
+import marouenj.dsa.reuse.Tree2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
