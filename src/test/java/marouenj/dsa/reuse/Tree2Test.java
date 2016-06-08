@@ -10,7 +10,6 @@ import java.io.PrintStream;
 public class Tree2Test {
 
     private final String TREE_FROM_PRE_ORDER_IN_ORDER = "treeFromPreOrderInOrder";
-    private final String IS_BALANCED = "isBalanced";
 
     @DataProvider(name = TREE_FROM_PRE_ORDER_IN_ORDER)
     public Object[][] treeFromPreOrderInOrder() throws Exception {
@@ -63,6 +62,8 @@ public class Tree2Test {
         Tree2.inOrder(root);
         Assert.assertEquals(byteArrayOutputStream.toString(), expectedIn);
     }
+
+    private final String IS_BALANCED = "isBalanced";
 
     @DataProvider(name = IS_BALANCED)
     public Object[][] isBalanced() throws Exception {
