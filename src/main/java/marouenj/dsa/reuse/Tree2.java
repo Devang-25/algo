@@ -27,7 +27,7 @@ public class Tree2 {
 
         int idx = Arrays.indexOf(in, in_lo, in_hi, pre[pre_lo]);
         if (idx == -1) {
-            throw new Exception("corrupted tree serialization");
+            throw new Exception("Key not found");
         }
 
         n.setLeft(TreeFromPreOrderInOrderRec(pre, pre_lo + 1, pre_lo + (idx - in_lo), in, in_lo, idx - 1));
