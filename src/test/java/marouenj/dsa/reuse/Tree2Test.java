@@ -1,13 +1,10 @@
 package marouenj.dsa.reuse;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
-import marouenj.dsa.reuse.Node2;
-import marouenj.dsa.reuse.Node2WithCount;
-import marouenj.dsa.reuse.Tree2;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 public class Tree2Test {
 
