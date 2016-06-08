@@ -10,15 +10,15 @@ public class Tree2 {
      * serialization/deserialization
 	 */
 
-    public static <A extends Comparable<A>> Node2<A> TreeFromPreOrderInOrder(A[] pre, A[] in) throws Exception {
+    public static <A extends Comparable<A>> Node2<A> treeFromPreOrderInOrder(A[] pre, A[] in) throws Exception {
         if (pre == null || in == null || pre.length != in.length || pre.length == 0) {
             return null;
         }
 
-        return TreeFromPreOrderInOrderRec(pre, 0, pre.length - 1, in, 0, in.length - 1);
+        return treeFromPreOrderInOrderRec(pre, 0, pre.length - 1, in, 0, in.length - 1);
     }
 
-    private static <A extends Comparable<A>> Node2<A> TreeFromPreOrderInOrderRec(A[] pre, int pre_lo, int pre_hi, A[] in, int in_lo, int in_hi) throws Exception {
+    private static <A extends Comparable<A>> Node2<A> treeFromPreOrderInOrderRec(A[] pre, int pre_lo, int pre_hi, A[] in, int in_lo, int in_hi) throws Exception {
         if (in_lo > in_hi) {
             return null;
         }
@@ -30,8 +30,8 @@ public class Tree2 {
             throw new Exception("Key not found");
         }
 
-        n.setLeft(TreeFromPreOrderInOrderRec(pre, pre_lo + 1, pre_lo + (idx - in_lo), in, in_lo, idx - 1));
-        n.setRight(TreeFromPreOrderInOrderRec(pre, pre_lo + (idx - in_lo) + 1, pre_hi, in, idx + 1, in_hi));
+        n.setLeft(treeFromPreOrderInOrderRec(pre, pre_lo + 1, pre_lo + (idx - in_lo), in, in_lo, idx - 1));
+        n.setRight(treeFromPreOrderInOrderRec(pre, pre_lo + (idx - in_lo) + 1, pre_hi, in, idx + 1, in_hi));
 
         return n;
     }

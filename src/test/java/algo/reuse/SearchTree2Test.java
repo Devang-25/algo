@@ -18,7 +18,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{23, 24, 25, 26, 27, 50, 75, 100, 125, 150, 175};
         Integer[] pre = new Integer[]{100, 50, 25, 24, 23, 26, 27, 75, 150, 125, 175};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Assert.assertTrue(SearchTree2.isSearchTree2(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
     }
@@ -28,7 +28,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{23, 24, 25, 26, 27, 50, 175, 100, 125, 150, 175};
         Integer[] pre = new Integer[]{100, 50, 25, 24, 23, 26, 27, 175, 150, 125, 175};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Assert.assertFalse(SearchTree2.isSearchTree2(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
     }
@@ -43,7 +43,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{23, 24, 25, 26, 27, 50, 75, 100, 125, 150, 175};
         Integer[] pre = new Integer[]{100, 50, 25, 24, 23, 26, 27, 75, 150, 125, 175};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Assert.assertEquals(SearchTree2.min(root).getKey(), (Integer) 23);
     }
@@ -58,7 +58,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{23, 24, 25, 26, 27, 50, 75, 100, 125, 150, 175};
         Integer[] pre = new Integer[]{100, 50, 25, 24, 23, 26, 27, 75, 150, 125, 175};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Assert.assertEquals(SearchTree2.max(root).getKey(), (Integer) 175);
     }
@@ -68,7 +68,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{23, 24, 25, 26, 27, 50, 75, 100, 125, 150, 175};
         Integer[] pre = new Integer[]{100, 50, 25, 24, 23, 26, 27, 75, 150, 125, 175};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Integer key = null;
 
         key = 50;
@@ -89,7 +89,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{21, 20, 29, 10, 51, 50, 119, 5, 152, 151, 150, 120, 200, 201, 202};
         Integer[] pre = new Integer[]{5, 10, 20, 21, 29, 50, 51, 119, 120, 150, 151, 152, 200, 201, 202};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Integer key;
 
         for (int i = 0; i < pre.length; i++) {
@@ -109,7 +109,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{23, 24, 25, 26, 27, 50, 75, 100, 125, 150, 175};
         Integer[] pre = new Integer[]{100, 50, 25, 24, 23, 26, 27, 75, 150, 125, 175};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Integer key = null;
 
         key = 23;
@@ -151,7 +151,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{23, 24, 25, 26, 27, 50, 75, 100, 125, 150, 175};
         Integer[] pre = new Integer[]{100, 50, 25, 24, 23, 26, 27, 75, 150, 125, 175};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Integer key;
 
@@ -200,7 +200,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{23, 24, 25, 26, 27, 50, 75, 100, 125, 150, 175};
         Integer[] pre = new Integer[]{100, 50, 25, 24, 23, 26, 27, 75, 150, 125, 175};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         List<Integer> kLargest;
 
@@ -249,7 +249,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{23, 24, 25, 26, 27, 50, 75, 100, 125, 150, 175};
         Integer[] pre = new Integer[]{100, 50, 25, 24, 23, 26, 27, 75, 150, 125, 175};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Integer key = null;
 
         key = 28;
@@ -278,7 +278,7 @@ public class SearchTree2Test {
         Integer[] in = new Integer[]{23, 24, 25, 26, 27, 50, 75, 100, 125, 150, 175};
         Integer[] pre = new Integer[]{100, 50, 25, 24, 23, 26, 27, 75, 150, 125, 175};
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Node2<Integer> head = SearchTree2.toLinkedList(root);
         LinkedList.dump(head);

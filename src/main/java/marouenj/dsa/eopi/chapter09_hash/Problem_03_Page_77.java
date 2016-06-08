@@ -15,15 +15,15 @@ public class Problem_03_Page_77 {
 //	public static void main(String[] args) {
 //		Integer[] pre1 = {3, 2, 1, 0};
 //		Integer[] in1  = {0, 1, 2, 3};
-//		Node2<Integer> root1 = Tree2.TreeFromPreOrderInOrder(in1, 0, in1.length-1, pre1, 0, pre1.length-1);
+//		Node2<Integer> root1 = Tree2.treeFromPreOrderInOrder(in1, 0, in1.length-1, pre1, 0, pre1.length-1);
 //		
 //		Integer[] pre2 = {9, 5, 3, 7, 11};
 //		Integer[] in2  = {3, 5, 7, 9, 11};
-//		Node2<Integer> root2 = Tree2.TreeFromPreOrderInOrder(in2, 0, in2.length-1, pre2, 0, pre2.length-1);
+//		Node2<Integer> root2 = Tree2.treeFromPreOrderInOrder(in2, 0, in2.length-1, pre2, 0, pre2.length-1);
 //
 //		Integer[] pre3 = {2, 1, 0, 5, 3, 7};
 //		Integer[] in3  = {0, 1, 2, 3, 5, 7};
-//		Node2<Integer> root3 = Tree2.TreeFromPreOrderInOrder(in3, 0, in3.length-1, pre3, 0, pre3.length-1);
+//		Node2<Integer> root3 = Tree2.treeFromPreOrderInOrder(in3, 0, in3.length-1, pre3, 0, pre3.length-1);
 //		
 //		dump(root1);
 //		System.out.println();

@@ -33,7 +33,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1};
         Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.inOrder(root);
         Assert.assertEquals(byteArrayOutputStream.toString(), "1, ");
@@ -51,7 +51,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2};
         Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.inOrder(root);
         Assert.assertEquals(byteArrayOutputStream.toString(), "1, 2, ");
@@ -69,7 +69,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.inOrder(root);
         Assert.assertEquals(byteArrayOutputStream.toString(), "1, 2, 3, 4, 5, 6, 7, ");
@@ -110,7 +110,7 @@ public class Tree2Test {
         data[offset++] = new Object[]{null, true}; // special case where root is null
 
         for (int i = 0; i < in.length; i++) {
-            Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in[i], pre[i]);
+            Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in[i], pre[i]);
             data[offset + i] = new Object[]{root, expected[i]};
         }
 
@@ -126,7 +126,7 @@ public class Tree2Test {
     public void withBalancedDescendants_1() throws Exception {
         Character[] in = new Character[]{'D', 'C', 'E', 'B', 'F', 'H', 'G', 'A', 'J', 'L', 'M', 'K', 'N', 'I', 'O', 'P'};
         Character[] pre = new Character[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'};
-        Node2<Character> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Character> root = Tree2.treeFromPreOrderInOrder(in, pre);
         int k = 3;
 
         Node2<Character> match = Tree2.withBalancedDescendants(root, k);
@@ -156,7 +156,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1};
         Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.preOrderRec(root);
 
@@ -171,7 +171,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2};
         Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.preOrderRec(root);
 
@@ -186,7 +186,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.preOrderRec(root);
 
@@ -214,7 +214,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1};
         Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.inOrderRec(root);
 
@@ -229,7 +229,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2};
         Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.inOrderRec(root);
 
@@ -244,7 +244,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.inOrderRec(root);
 
@@ -272,7 +272,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1};
         Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.postOrderRec(root);
 
@@ -287,7 +287,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2};
         Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.postOrderRec(root);
 
@@ -302,7 +302,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.postOrderRec(root);
 
@@ -330,7 +330,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1};
         Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.preOrder(root);
 
@@ -345,7 +345,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2};
         Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.preOrder(root);
 
@@ -360,7 +360,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.preOrder(root);
 
@@ -388,7 +388,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1};
         Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.preOrderV2(root);
 
@@ -403,7 +403,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2};
         Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.preOrderV2(root);
 
@@ -418,7 +418,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.preOrderV2(root);
 
@@ -446,7 +446,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1};
         Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.inOrder(root);
 
@@ -461,7 +461,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2};
         Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.inOrder(root);
 
@@ -476,7 +476,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.inOrder(root);
 
@@ -504,7 +504,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1};
         Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.postOrder(root);
 
@@ -519,7 +519,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2};
         Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.postOrder(root);
 
@@ -534,7 +534,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.postOrder(root);
 
@@ -549,7 +549,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
         Integer[] pre = new Integer[]{9, 7, 6, 1, 3, 2, 5, 4, 8, 18, 11, 10, 17, 12, 16, 14, 13, 15};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.postOrder(root);
 
@@ -567,7 +567,7 @@ public class Tree2Test {
     public void isSymmetric_1() throws Exception {
         Integer[] in = new Integer[]{1};
         Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Assert.assertEquals(Tree2.isSymmetric(root), true);
     }
@@ -576,7 +576,7 @@ public class Tree2Test {
     public void isSymmetric_2() throws Exception {
         Integer[] in = new Integer[]{1, 2};
         Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Assert.assertEquals(Tree2.isSymmetric(root), false);
     }
@@ -585,7 +585,7 @@ public class Tree2Test {
     public void isSymmetric_3() throws Exception {
         Integer[] in = new Integer[]{2, 1};
         Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Assert.assertEquals(Tree2.isSymmetric(root), false);
     }
@@ -594,7 +594,7 @@ public class Tree2Test {
     public void isSymmetric_4() throws Exception {
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
         Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Assert.assertEquals(Tree2.isSymmetric(root), false);
     }
@@ -603,7 +603,7 @@ public class Tree2Test {
     public void isSymmetric_5() throws Exception {
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7, 8, 9};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Assert.assertEquals(Tree2.isSymmetric(root), false);
     }
@@ -612,7 +612,7 @@ public class Tree2Test {
     public void isSymmetric_6() throws Exception {
         Integer[] in = new Integer[]{3, 2, 1, 4, 5};
         Integer[] pre = new Integer[]{1, 2, 3, 4, 5};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Assert.assertEquals(Tree2.isSymmetric(root), false);
     }
@@ -621,7 +621,7 @@ public class Tree2Test {
     public void isSymmetric_7() throws Exception {
         Integer[] in = new Integer[]{3, 2, 1, 4, 5};
         Integer[] pre = new Integer[]{1, 2, 3, 4, 5};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         root.getRight().setKey(2);
         root.getRight().getRight().setKey(3);
 
@@ -637,7 +637,7 @@ public class Tree2Test {
     public void lca_1() throws Exception {
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         Integer[] pre = new Integer[]{9, 8, 2, 1, 3, 6, 5, 4, 7, 10, 12, 11, 13};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Node2<Integer> a = new Node2<>(1);
         Node2<Integer> b = new Node2<>(3);
 
@@ -648,7 +648,7 @@ public class Tree2Test {
     public void lca_2() throws Exception {
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         Integer[] pre = new Integer[]{9, 8, 2, 1, 3, 6, 5, 4, 7, 10, 12, 11, 13};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Node2<Integer> a = new Node2<>(1);
         Node2<Integer> b = new Node2<>(11);
 
@@ -659,7 +659,7 @@ public class Tree2Test {
     public void lca_3() throws Exception {
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         Integer[] pre = new Integer[]{9, 8, 2, 1, 3, 6, 5, 4, 7, 10, 12, 11, 13};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Node2<Integer> a = new Node2<>(2);
         Node2<Integer> b = new Node2<>(4);
 
@@ -670,7 +670,7 @@ public class Tree2Test {
     public void lca_4() throws Exception {
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         Integer[] pre = new Integer[]{9, 8, 2, 1, 3, 6, 5, 4, 7, 10, 12, 11, 13};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Node2<Integer> a = new Node2<>(4);
         Node2<Integer> b = new Node2<>(7);
 
@@ -681,7 +681,7 @@ public class Tree2Test {
     public void lca_5() throws Exception {
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         Integer[] pre = new Integer[]{9, 8, 2, 1, 3, 6, 5, 4, 7, 10, 12, 11, 13};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Node2<Integer> a = new Node2<>(9);
         Node2<Integer> b = new Node2<>(11);
 
@@ -706,7 +706,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         Integer[] pre = new Integer[]{9, 8, 2, 1, 3, 6, 5, 4, 7, 10, 12, 11, 13};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.border(root);
         Assert.assertEquals(baos.toString(), "9, 8, 2, 1, 4, 7, 11, 13, 12, 10, ");
@@ -720,7 +720,7 @@ public class Tree2Test {
 
         Integer[] in = new Integer[]{4, 3, 5, 2, 6, 100, 7, 1, 8, 200, 9, 13, 10, 12, 11};
         Integer[] pre = new Integer[]{1, 2, 3, 4, 5, 100, 6, 7, 13, 200, 8, 9, 12, 10, 11};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Tree2.border(root);
         Assert.assertEquals(baos.toString(), "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, ");
@@ -730,7 +730,7 @@ public class Tree2Test {
     public void inOrderKthNode_1() throws Exception {
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         Integer[] pre = new Integer[]{9, 8, 2, 1, 3, 6, 5, 4, 7, 10, 12, 11, 13};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Node2WithCount<Integer> withCount = Tree2.withCount(root);
 
         Assert.assertEquals(Tree2.inOrderKthNodeRec(withCount, 1).getKey(), new Integer(1));
@@ -752,7 +752,7 @@ public class Tree2Test {
     public void inOrderKthNode_2() throws Exception {
         Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
         Integer[] pre = new Integer[]{9, 8, 2, 1, 3, 6, 5, 4, 7, 10, 12, 11, 13};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
         Node2WithCount<Integer> withCount = Tree2.withCount(root);
 
         Assert.assertEquals(Tree2.inOrderKthNode(withCount, 1).getKey(), new Integer(1));
@@ -775,8 +775,8 @@ public class Tree2Test {
         Integer[] in = new Integer[]{1, 2, 3};
         Integer[] pre1 = new Integer[]{1, 2, 3};
         Integer[] pre2 = new Integer[]{2, 1, 3};
-        Node2<Integer> root1 = Tree2.TreeFromPreOrderInOrder(in, pre1);
-        Node2<Integer> root2 = Tree2.TreeFromPreOrderInOrder(in, pre2);
+        Node2<Integer> root1 = Tree2.treeFromPreOrderInOrder(in, pre1);
+        Node2<Integer> root2 = Tree2.treeFromPreOrderInOrder(in, pre2);
 
         Assert.assertTrue(Tree2.sameInOrder(root1, root2));
     }

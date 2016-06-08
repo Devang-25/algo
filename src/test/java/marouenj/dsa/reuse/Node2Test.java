@@ -40,7 +40,7 @@ public class Node2Test {
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
         System.setOut(printStream);
 
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
 
         Iterator<Integer> itr = root.inOrderIterator();
         while (itr.hasNext()) {
