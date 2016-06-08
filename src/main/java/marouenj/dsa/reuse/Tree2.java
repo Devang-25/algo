@@ -12,7 +12,7 @@ public class Tree2 {
 
     public static <A extends Comparable<A>> Node2<A> treeFromPreOrderInOrder(A[] pre, A[] in) throws Exception {
         if (pre == null || in == null || pre.length != in.length || pre.length == 0) {
-            return null;
+            throw new Exception("Invalid input");
         }
 
         return treeFromPreOrderInOrderRec(pre, 0, pre.length - 1, in, 0, in.length - 1);
