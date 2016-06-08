@@ -1,12 +1,15 @@
 package marouenj.dsa.reuse;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 public class Tree2Test {
+
+    private final String IS_BALANCED = "isBalanced";
 
     @Test
     public void TreeFromPreOrderInOrder_null() throws Exception {
@@ -76,56 +79,47 @@ public class Tree2Test {
         Assert.assertEquals(byteArrayOutputStream.toString(), "5, 3, 2, 1, 4, 6, 7, ");
     }
 
-    @Test
-    public void isBalanced_null() {
-        Node2<Integer> root = null;
+    @DataProvider(name = IS_BALANCED)
+    public Object[][] isBalanced() throws Exception {
+        Integer[][] in = new Integer[][]{
+                new Integer[]{1},
+                new Integer[]{1, 2},
+                new Integer[]{2, 1},
+                new Integer[]{1, 2, 3, 4, 5, 6, 7},
+                new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9},
+        };
 
-        Assert.assertEquals(Tree2.isBalanced(root), true);
+        Integer[][] pre = new Integer[][]{
+                new Integer[]{1},
+                new Integer[]{2, 1},
+                new Integer[]{2, 1},
+                new Integer[]{5, 3, 2, 1, 4, 6, 7},
+                new Integer[]{5, 3, 2, 1, 4, 6, 7, 8, 9}
+        };
+
+        boolean[] expected = new boolean[]{
+                true,
+                true,
+                true,
+                true,
+                false,
+        };
+
+        int offset = 0; // add special cases at the beginning
+        Object[][] data = new Object[in.length + 1][];
+        data[offset++] = new Object[]{null, true}; // special case where root is null
+
+        for (int i = 0; i < in.length; i++) {
+            Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in[i], pre[i]);
+            data[offset + i] = new Object[]{root, expected[i]};
+        }
+
+        return data;
     }
 
-    @Test
-    public void isBalanced_1() throws Exception {
-        Integer[] in = new Integer[]{1};
-        Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isBalanced(root), true);
-    }
-
-    @Test
-    public void isBalanced_2() throws Exception {
-        Integer[] in = new Integer[]{1, 2};
-        Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isBalanced(root), true);
-    }
-
-    @Test
-    public void isBalanced_3() throws Exception {
-        Integer[] in = new Integer[]{2, 1};
-        Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isBalanced(root), true);
-    }
-
-    @Test
-    public void isBalanced_4() throws Exception {
-        Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
-        Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isBalanced(root), true);
-    }
-
-    @Test
-    public void isBalanced_5() throws Exception {
-        Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
-        Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7, 8, 9};
-        Node2<Integer> root = Tree2.TreeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isBalanced(root), false);
+    @Test(dataProvider = IS_BALANCED)
+    public void isBalanced(Node2<Integer> root, boolean expected) {
+        Assert.assertEquals(Tree2.isBalanced(root), expected);
     }
 
     @Test
