@@ -112,7 +112,7 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
     }
 
     public Iterator<A> inOrderIterator() {
-        return new InOrderIterator<A>(this);
+        return new InOrderIterator<>(this);
     }
 
     private class InOrderIterator<B extends Comparable<B>> implements Iterator<B> {
