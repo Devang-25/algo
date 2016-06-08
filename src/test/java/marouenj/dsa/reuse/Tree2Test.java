@@ -1,4 +1,4 @@
-package algo.reuse;
+package marouenj.dsa.reuse;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
