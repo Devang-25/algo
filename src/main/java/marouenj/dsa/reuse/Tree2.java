@@ -37,7 +37,7 @@ public class Tree2 {
     }
 
 	/*
-	 * balance
+     * balance
 	 */
 
     public static <A extends Comparable<A>> boolean isBalanced(Node2<A> n) {
@@ -100,9 +100,9 @@ public class Tree2 {
 
         return lcount + rcount + 1;
     }
-	
+
 	/*
-	 * traversal
+     * traversal
 	 */
 
     public static <A extends Comparable<A>> void preOrderRec(Node2<A> n) {
@@ -226,9 +226,9 @@ public class Tree2 {
             }
         }
     }
-	
+
 	/*
-	 * traversal signature
+     * traversal signature
 	 */
 
     public static <A extends Comparable<A>> boolean sameInOrder(Node2<A> one, Node2<A> two) {
@@ -257,9 +257,9 @@ public class Tree2 {
         // exactly one is null
         return false;
     }
-	
+
 	/*
-	 * symmetry
+     * symmetry
 	 */
 
     public static <A extends Comparable<A>> boolean isSymmetric(Node2<A> n) {
@@ -283,9 +283,9 @@ public class Tree2 {
                 && isSymmetric(l.getLeft(), r.getRight())
                 && isSymmetric(l.getRight(), r.getLeft());
     }
-	
+
 	/*
-	 * lca
+     * lca
 	 */
 
     public static <A extends Comparable<A>> Node2<A> lca(Node2<A> n, Node2<A> a, Node2<A> b) {
@@ -305,9 +305,9 @@ public class Tree2 {
         }
         return n;
     }
-	
+
 	/*
-	 * border
+     * border
 	 */
 
     public static <A extends Comparable<A>> void border(Node2<A> n) {
@@ -351,9 +351,9 @@ public class Tree2 {
         right(n.getRight());
         System.out.print(n.getKey() + ", ");
     }
-	
+
 	/*
-	 * Node2 to Node2WithCount
+     * Node2 to Node2WithCount
 	 */
 
     public static <A extends Comparable<A>> Node2WithCount<A> withCount(Node2<A> n) {
@@ -377,9 +377,9 @@ public class Tree2 {
 
         return copy;
     }
-	
+
 	/*
-	 * kth node in-order traversal
+     * kth node in-order traversal
 	 */
 
     public static <A extends Comparable<A>> Node2<A> inOrderKthNodeRec(Node2WithCount<A> n, int k) {
@@ -425,9 +425,9 @@ public class Tree2 {
 
         return n;
     }
-	
+
 	/*
-	 * not yet
+     * not yet
 	 */
 
     public static <A extends Comparable<A>> Node2<A> getCanonical(Node2<A> node, Map<Node2<A>, Node2<A>> dic) {
