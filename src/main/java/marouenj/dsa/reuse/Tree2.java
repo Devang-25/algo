@@ -11,7 +11,7 @@ public class Tree2 {
 	 */
 
     public static <A extends Comparable<A>> Node2<A> TreeFromPreOrderInOrder(A[] pre, A[] in) throws Exception {
-        if (pre == null || in == null || pre.length == 0 || in.length == 0 || pre.length != in.length) {
+        if (pre == null || in == null || pre.length != in.length || pre.length == 0) {
             return null;
         }
 
