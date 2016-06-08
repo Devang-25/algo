@@ -10,28 +10,28 @@ public class Tree2 {
      * serialization/deserialization
 	 */
 
-    public static <A extends Comparable<A>> Node2<A> TreeFromPreOrderInOrder(A[] in, A[] pre) throws Exception {
-        if (in == null || pre == null || in.length == 0 || pre.length == 0 || in.length != pre.length) {
+    public static <A extends Comparable<A>> Node2<A> TreeFromPreOrderInOrder(A[] pre, A[] in) throws Exception {
+        if (pre == null || in == null || pre.length == 0 || in.length == 0 || pre.length != in.length) {
             return null;
         }
 
-        return TreeFromPreOrderInOrderRec(in, 0, in.length - 1, pre, 0, pre.length - 1);
+        return TreeFromPreOrderInOrderRec(pre, 0, pre.length - 1, in, 0, in.length - 1);
     }
 
-    private static <A extends Comparable<A>> Node2<A> TreeFromPreOrderInOrderRec(A[] in, int in_lo, int in_hi, A[] pre, int pre_lo, int pre_hi) throws Exception {
+    private static <A extends Comparable<A>> Node2<A> TreeFromPreOrderInOrderRec(A[] pre, int pre_lo, int pre_hi, A[] in, int in_lo, int in_hi) throws Exception {
         if (in_lo > in_hi) {
             return null;
         }
 
-        Node2<A> n = new Node2<A>(pre[pre_lo]);
+        Node2<A> n = new Node2<>(pre[pre_lo]);
 
         int idx = Arrays.indexOf(in, in_lo, in_hi, pre[pre_lo]);
         if (idx == -1) {
             throw new Exception("corrupted tree serialization");
         }
 
-        n.setLeft(TreeFromPreOrderInOrderRec(in, in_lo, idx - 1, pre, pre_lo + 1, pre_lo + (idx - in_lo)));
-        n.setRight(TreeFromPreOrderInOrderRec(in, idx + 1, in_hi, pre, pre_lo + (idx - in_lo) + 1, pre_hi));
+        n.setLeft(TreeFromPreOrderInOrderRec(pre, pre_lo + 1, pre_lo + (idx - in_lo), in, in_lo, idx - 1));
+        n.setRight(TreeFromPreOrderInOrderRec(pre, pre_lo + (idx - in_lo) + 1, pre_hi, in, idx + 1, in_hi));
 
         return n;
     }
