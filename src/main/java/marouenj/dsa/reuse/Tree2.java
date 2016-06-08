@@ -60,11 +60,12 @@ public class Tree2 {
             return -1;
         }
 
-        if (Math.abs(l - r) > 1) {
+        int diff = Math.abs(l - r);
+        if (diff > 1) {
             return -1;
         }
 
-        return Math.max(l, r) + 1;
+        return diff + 1;
     }
 
     public static <A extends Comparable<A>> Node2<A> withBalancedDescendants(Node2<A> n, int k) {
