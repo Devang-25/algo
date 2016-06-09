@@ -22,25 +22,25 @@ public class Node2Test {
                         "1, ",
                 },
                 {
-                        new Integer[]{1, 2},
                         new Integer[]{2, 1},
+                        new Integer[]{1, 2},
                         "1, 2, ",
                 },
                 {
-                        new Integer[]{1, 2, 3, 4, 5, 6, 7},
                         new Integer[]{5, 3, 2, 1, 4, 6, 7},
+                        new Integer[]{1, 2, 3, 4, 5, 6, 7},
                         "1, 2, 3, 4, 5, 6, 7, ",
                 },
         };
     }
 
     @Test(dataProvider = IN_ORDER_ITERATOR)
-    public void inOrderIterator_1(Integer[] in, Integer[] pre, String expected) throws Exception {
+    public void inOrderIterator_1(Integer[] pre, Integer[] in, String expected) throws Exception {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
         System.setOut(printStream);
 
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(pre, in);
 
         Iterator<Integer> itr = root.inOrderIterator();
         while (itr.hasNext()) {
