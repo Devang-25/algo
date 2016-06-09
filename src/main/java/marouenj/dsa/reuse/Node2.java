@@ -140,14 +140,8 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
                     return t.getKey();
                 }
 
-                if (curr.getLeft() != null) {
-                    stack.push(curr);
-                    curr = curr.getLeft();
-                } else {
-                    Node2<B> t = curr;
-                    curr = curr.getRight();
-                    return t.getKey();
-                }
+                stack.push(curr);
+                curr = curr.getLeft();
             }
         }
     }
