@@ -115,6 +115,11 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
         return new InOrderIterator<>(this);
     }
 
+    /**
+     * In order iterator
+     *
+     * @param <B> Type of node key
+     */
     private class InOrderIterator<B extends Comparable<B>> implements Iterator<B> {
 
         private Node2<B> curr;
