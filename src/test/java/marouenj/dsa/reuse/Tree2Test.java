@@ -108,19 +108,6 @@ public class Tree2Test {
         Assert.assertEquals(Tree2.isBalanced(root), expected);
     }
 
-    @Test
-    public void withBalancedDescendants_1() throws Exception {
-        Character[] in = new Character[]{'D', 'C', 'E', 'B', 'F', 'H', 'G', 'A', 'J', 'L', 'M', 'K', 'N', 'I', 'O', 'P'};
-        Character[] pre = new Character[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'};
-        Node2<Character> root = Tree2.treeFromPreOrderInOrder(in, pre);
-        int k = 3;
-
-        Node2<Character> match = Tree2.withBalancedDescendants(root, k);
-
-        Assert.assertNotEquals(match, null);
-        Assert.assertEquals(match.getKey(), new Character('J'));
-    }
-
     private final String PRE_ORDER = "preOrder";
 
     @DataProvider(name = PRE_ORDER)

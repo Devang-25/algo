@@ -68,40 +68,6 @@ public class Tree2 {
         return diff + 1;
     }
 
-    public static <A extends Comparable<A>> Node2<A> withBalancedDescendants(Node2<A> n, int k) {
-        Object obj = withKBalancedDescendantsRec(n, k);
-        if (obj instanceof Integer) {
-            return null;
-        }
-        @SuppressWarnings("unchecked")
-        Node2<A> match = (Node2<A>) obj;
-        return match;
-    }
-
-    private static <A extends Comparable<A>> Object withKBalancedDescendantsRec(Node2<A> n, int k) {
-        if (n == null) {
-            return 0;
-        }
-
-        Object l = withKBalancedDescendantsRec(n.getLeft(), k);
-        if (l instanceof Node2) {
-            return l;
-        }
-        int lcount = (Integer) l;
-
-        Object r = withKBalancedDescendantsRec(n.getRight(), k);
-        if (r instanceof Node2) {
-            return r;
-        }
-        int rcount = (Integer) r;
-
-        if (Math.abs(lcount - rcount) > k) {
-            return n;
-        }
-
-        return lcount + rcount + 1;
-    }
-
 	/*
      * traversal
 	 */
