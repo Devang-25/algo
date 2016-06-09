@@ -178,62 +178,52 @@ public class Tree2Test {
         Assert.assertEquals(byteArrayOutputStream.toString(), expected);
     }
 
-    @Test
-    public void inOrder_null() {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
-        System.setOut(printStream);
+    private final String IN_ORDER = "inOrder";
 
-        Node2<Integer> root = null;
+    @DataProvider(name = IN_ORDER)
+    public Object[][] inOrder() throws Exception {
+        Integer[][] pre = new Integer[][]{
+                new Integer[]{1},
+                new Integer[]{1, 2},
+                new Integer[]{2, 1},
+                new Integer[]{5, 3, 2, 1, 4, 6, 7},
+        };
 
-        Tree2.inOrder(root);
+        Integer[][] in = new Integer[][]{
+                new Integer[]{1},
+                new Integer[]{2, 1},
+                new Integer[]{1, 2},
+                new Integer[]{1, 2, 3, 4, 5, 6, 7},
+        };
 
-        Assert.assertEquals(byteArrayOutputStream.toString(), "");
+        String[] expected = new String[]{
+                "1, ",
+                "2, 1, ",
+                "1, 2, ",
+                "1, 2, 3, 4, 5, 6, 7, ",
+        };
+
+        int offset = 0; // add special cases at the beginning
+        Object[][] data = new Object[in.length + 1][];
+        data[offset++] = new Object[]{null, ""}; // special case where root is null
+
+        for (int i = 0; i < in.length; i++) {
+            Node2<Integer> root = Tree2.treeFromPreOrderInOrder(pre[i], in[i]);
+            data[offset + i] = new Object[]{root, expected[i]};
+        }
+
+        return data;
     }
 
-    @Test
-    public void inOrder_1() throws Exception {
+    @Test(dataProvider = IN_ORDER)
+    public void inOrder(Node2<Integer> root, String expected) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
         System.setOut(printStream);
 
-        Integer[] in = new Integer[]{1};
-        Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
         Tree2.inOrder(root);
 
-        Assert.assertEquals(byteArrayOutputStream.toString(), "1, ");
-    }
-
-    @Test
-    public void inOrder_2() throws Exception {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
-        System.setOut(printStream);
-
-        Integer[] in = new Integer[]{1, 2};
-        Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Tree2.inOrder(root);
-
-        Assert.assertEquals(byteArrayOutputStream.toString(), "1, 2, ");
-    }
-
-    @Test
-    public void inOrder_3() throws Exception {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
-        System.setOut(printStream);
-
-        Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
-        Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Tree2.inOrder(root);
-
-        Assert.assertEquals(byteArrayOutputStream.toString(), "1, 2, 3, 4, 5, 6, 7, ");
+        Assert.assertEquals(byteArrayOutputStream.toString(), expected);
     }
 
     @Test
