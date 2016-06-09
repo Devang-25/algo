@@ -55,7 +55,7 @@ public class Tree2Test {
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
         System.setOut(printStream);
 
-        Tree2.preOrder(root);
+        Tree2.preOrderV2(root);
         Assert.assertEquals(byteArrayOutputStream.toString(), expectedPre);
 
         byteArrayOutputStream.reset();
@@ -121,120 +121,74 @@ public class Tree2Test {
         Assert.assertEquals(match.getKey(), new Character('J'));
     }
 
-    @Test
-    public void preOrder_null() {
+    private final String PRE_ORDER = "preOrder";
+
+    @DataProvider(name = PRE_ORDER)
+    public Object[][] preOrder() throws Exception {
+        Integer[][] pre = new Integer[][]{
+                new Integer[]{1},
+                new Integer[]{1, 2},
+                new Integer[]{2, 1},
+                new Integer[]{5, 3, 2, 1, 4, 6, 7},
+        };
+
+        Integer[][] in = new Integer[][]{
+                new Integer[]{1},
+                new Integer[]{2, 1},
+                new Integer[]{1, 2},
+                new Integer[]{1, 2, 3, 4, 5, 6, 7},
+        };
+
+        String[] expected = new String[]{
+                "1, ",
+                "1, 2, ",
+                "2, 1, ",
+                "5, 3, 2, 1, 4, 6, 7, ",
+        };
+
+        int offset = 0; // add special cases at the beginning
+        Object[][] data = new Object[in.length + 1][];
+        data[offset++] = new Object[]{null, ""}; // special case where root is null
+
+        for (int i = 0; i < in.length; i++) {
+            Node2<Integer> root = Tree2.treeFromPreOrderInOrder(pre[i], in[i]);
+            data[offset + i] = new Object[]{root, expected[i]};
+        }
+
+        return data;
+    }
+
+    @Test(dataProvider = PRE_ORDER)
+    public void preOrder(Node2<Integer> root, String expected) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
         System.setOut(printStream);
-
-        Node2<Integer> root = null;
 
         Tree2.preOrder(root);
 
-        Assert.assertEquals(byteArrayOutputStream.toString(), "");
+        Assert.assertEquals(byteArrayOutputStream.toString(), expected);
     }
 
-    @Test
-    public void preOrder_1() throws Exception {
+    @Test(dataProvider = PRE_ORDER)
+    public void preOrderV2(Node2<Integer> root, String expected) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
         System.setOut(printStream);
-
-        Integer[] in = new Integer[]{1};
-        Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Tree2.preOrder(root);
-
-        Assert.assertEquals(byteArrayOutputStream.toString(), "1, ");
-    }
-
-    @Test
-    public void preOrder_2() throws Exception {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
-        System.setOut(printStream);
-
-        Integer[] in = new Integer[]{1, 2};
-        Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Tree2.preOrder(root);
-
-        Assert.assertEquals(byteArrayOutputStream.toString(), "2, 1, ");
-    }
-
-    @Test
-    public void preOrder_3() throws Exception {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
-        System.setOut(printStream);
-
-        Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
-        Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Tree2.preOrder(root);
-
-        Assert.assertEquals(byteArrayOutputStream.toString(), "5, 3, 2, 1, 4, 6, 7, ");
-    }
-
-    @Test
-    public void preOrderV2_null() {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
-        System.setOut(printStream);
-
-        Node2<Integer> root = null;
 
         Tree2.preOrderV2(root);
 
-        Assert.assertEquals(byteArrayOutputStream.toString(), "");
+        Assert.assertEquals(byteArrayOutputStream.toString(), expected);
     }
 
-    @Test
-    public void preOrderV2_1() throws Exception {
+    @Test(dataProvider = PRE_ORDER)
+    public void preOrderV3(Node2<Integer> root, String expected) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
         System.setOut(printStream);
 
-        Integer[] in = new Integer[]{1};
-        Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
+        Tree2.preOrderV3(root);
 
-        Tree2.preOrderV2(root);
-
-        Assert.assertEquals(byteArrayOutputStream.toString(), "1, ");
-    }
-
-    @Test
-    public void preOrderV2_2() throws Exception {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
-        System.setOut(printStream);
-
-        Integer[] in = new Integer[]{1, 2};
-        Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Tree2.preOrderV2(root);
-
-        Assert.assertEquals(byteArrayOutputStream.toString(), "2, 1, ");
-    }
-
-    @Test
-    public void preOrderV2_3() throws Exception {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
-        System.setOut(printStream);
-
-        Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
-        Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Tree2.preOrderV2(root);
-
-        Assert.assertEquals(byteArrayOutputStream.toString(), "5, 3, 2, 1, 4, 6, 7, ");
+        Assert.assertEquals(byteArrayOutputStream.toString(), expected);
     }
 
     @Test

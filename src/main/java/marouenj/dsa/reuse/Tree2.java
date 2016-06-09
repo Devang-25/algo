@@ -140,27 +140,44 @@ public class Tree2 {
     }
 
     public static <A extends Comparable<A>> void preOrder(Node2<A> n) {
-        if (n == null) {
+        Stack<Node2<A>> stack = new Stack<>();
+        stack.push(n);
+
+        while (!stack.isEmpty()) {
+            Node2<A> node = stack.pop();
+
+            if (node == null) {
+                continue;
+            }
+
+            System.out.print(node.getKey() + ", ");
+
+            stack.push(node.getRight());
+            stack.push(node.getLeft());
+        }
+    }
+
+    public static <A extends Comparable<A>> void preOrderV2(Node2<A> n) {
+        if (n == null) { // make sure null values are not pushed
             return;
         }
 
-        Stack<Node2<A>> stack = new Stack<Node2<A>>();
+        Stack<Node2<A>> stack = new Stack<>();
         stack.push(n);
 
         while (!stack.isEmpty()) {
             Node2<A> node = stack.pop();
             System.out.print(node.getKey() + ", ");
-            if (node.getRight() != null) {
+            if (node.getRight() != null) { // make sure null values are not pushed
                 stack.push(node.getRight());
             }
-            if (node.getLeft() != null) {
+            if (node.getLeft() != null) { // make sure null values are not pushed
                 stack.push(node.getLeft());
             }
         }
     }
 
-    public static <A extends Comparable<A>> void preOrderV2(Node2<A> n) {
-        Node2<A> curr = n;
+    public static <A extends Comparable<A>> void preOrderV3(Node2<A> curr) {
         Stack<Node2<A>> stack = new Stack<>();
 
         while (curr != null || !stack.empty()) {
