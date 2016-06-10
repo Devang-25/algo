@@ -118,6 +118,9 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
         return new PreOrderIterator<>(this);
     }
 
+    /**
+     * @return Iterator for an in-order traversal
+     */
     public Iterator<A> inOrderIterator() {
         return new InOrderIterator<>(this);
     }
