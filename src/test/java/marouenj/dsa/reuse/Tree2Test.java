@@ -295,76 +295,49 @@ public class Tree2Test {
         Assert.assertTrue(Tree2.sameInOrder(root1, root2));
     }
 
-    @Test
-    public void isSymmetric_null() {
-        Node2<Integer> root = null;
+    private final String IS_SYMMETRIC = "isSymmetric";
 
-        Assert.assertEquals(Tree2.isSymmetric(root), true);
+    @DataProvider(name = IS_SYMMETRIC)
+    public Object[][] isSymmetric() throws Exception {
+        Integer[][] pre = new Integer[][]{
+                new Integer[]{1},
+                new Integer[]{2, 1},
+                new Integer[]{2, 1},
+                new Integer[]{5, 3, 2, 1, 4, 6, 7, 8, 9},
+                new Integer[]{3, 2, 1, 4, 5},
+        };
+
+        Integer[][] in = new Integer[][]{
+                new Integer[]{1},
+                new Integer[]{1, 2},
+                new Integer[]{2, 1},
+                new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9},
+                new Integer[]{1, 2, 3, 4, 5},
+        };
+
+        boolean[] expected = new boolean[]{
+                true,
+                false,
+                false,
+                false,
+                false,
+        };
+
+        int offset = 0; // add special cases at the beginning
+        Object[][] data = new Object[in.length + 1][];
+        data[offset++] = new Object[]{null, true}; // special case where root is null
+
+        for (int i = 0; i < in.length; i++) {
+            Node2<Integer> root = Tree2.treeFromPreOrderInOrder(pre[i], in[i]);
+            data[offset + i] = new Object[]{root, expected[i]};
+        }
+
+        return data;
     }
 
-    @Test
-    public void isSymmetric_1() throws Exception {
-        Integer[] in = new Integer[]{1};
-        Integer[] pre = new Integer[]{1};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isSymmetric(root), true);
-    }
-
-    @Test
-    public void isSymmetric_2() throws Exception {
-        Integer[] in = new Integer[]{1, 2};
-        Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isSymmetric(root), false);
-    }
-
-    @Test
-    public void isSymmetric_3() throws Exception {
-        Integer[] in = new Integer[]{2, 1};
-        Integer[] pre = new Integer[]{2, 1};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isSymmetric(root), false);
-    }
-
-    @Test
-    public void isSymmetric_4() throws Exception {
-        Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7};
-        Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isSymmetric(root), false);
-    }
-
-    @Test
-    public void isSymmetric_5() throws Exception {
-        Integer[] in = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
-        Integer[] pre = new Integer[]{5, 3, 2, 1, 4, 6, 7, 8, 9};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isSymmetric(root), false);
-    }
-
-    @Test
-    public void isSymmetric_6() throws Exception {
-        Integer[] in = new Integer[]{3, 2, 1, 4, 5};
-        Integer[] pre = new Integer[]{1, 2, 3, 4, 5};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-
-        Assert.assertEquals(Tree2.isSymmetric(root), false);
-    }
-
-    @Test
-    public void isSymmetric_7() throws Exception {
-        Integer[] in = new Integer[]{3, 2, 1, 4, 5};
-        Integer[] pre = new Integer[]{1, 2, 3, 4, 5};
-        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(in, pre);
-        root.getRight().setKey(2);
-        root.getRight().getRight().setKey(3);
-
-        Assert.assertEquals(Tree2.isSymmetric(root), true);
+    @Test(dataProvider = IS_SYMMETRIC)
+    public void isSymmetric(Node2<Integer> root, boolean expected) {
+        Assert.assertEquals(Tree2.isSymmetric(root), expected);
     }
 
     @Test
