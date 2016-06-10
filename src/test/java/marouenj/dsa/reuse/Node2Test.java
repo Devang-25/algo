@@ -35,7 +35,7 @@ public class Node2Test {
     }
 
     @Test(dataProvider = IN_ORDER_ITERATOR)
-    public void inOrderIterator_1(Integer[] pre, Integer[] in, String expected) throws Exception {
+    public void inOrderIterator(Integer[] pre, Integer[] in, String expected) throws Exception {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
         System.setOut(printStream);
