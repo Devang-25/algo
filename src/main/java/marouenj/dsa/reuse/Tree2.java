@@ -219,10 +219,14 @@ public class Tree2 {
         }
     }
 
-	/*
-     * traversal signature
-	 */
-
+    /**
+     * Check if two trees have the same in-order traversal signature
+     *
+     * @param one First tree
+     * @param two Second tree
+     * @param <A> Key type
+     * @return True is both trees have the same in-order traversal signature
+     */
     public static <A extends Comparable<A>> boolean sameInOrder(Node2<A> one, Node2<A> two) {
         if (one == null && two == null) { // both are null
             return true;
