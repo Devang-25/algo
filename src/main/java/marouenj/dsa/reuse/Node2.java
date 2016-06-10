@@ -111,8 +111,51 @@ public class Node2<A extends Comparable<A>> implements Comparable<Node2<A>> {
         return this.setRight(right);
     }
 
+    /**
+     * @return Iterator for a pre-order traversal
+     */
+    public Iterator<A> preOrderIterator() {
+        return new PreOrderIterator<>(this);
+    }
+
     public Iterator<A> inOrderIterator() {
         return new InOrderIterator<>(this);
+    }
+
+    /**
+     * Pre order iterator
+     *
+     * @param <B> Type of node key
+     */
+    private class PreOrderIterator<B extends Comparable<B>> implements Iterator<B> {
+
+        private Stack<Node2<B>> stack;
+
+        public PreOrderIterator(Node2<B> root) {
+            this.stack = new Stack<>();
+            if (root != null) {
+                this.stack.push(root);
+            }
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !this.stack.empty();
+        }
+
+        @Override
+        public B next() {
+            Node2<B> curr = this.stack.pop();
+            if (curr.getRight() != null) {
+                this.stack.push(curr.getRight());
+            }
+
+            if (curr.getLeft() != null) {
+                this.stack.push(curr.getLeft());
+            }
+
+            return curr.getKey();
+        }
     }
 
     /**

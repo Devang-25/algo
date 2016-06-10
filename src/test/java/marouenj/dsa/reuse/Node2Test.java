@@ -50,4 +50,44 @@ public class Node2Test {
 
         Assert.assertEquals(byteArrayOutputStream.toString(), expected);
     }
+
+    private final String PRE_ORDER_ITERATOR = "preOrderIterator";
+
+    @DataProvider(name = PRE_ORDER_ITERATOR)
+    public Object[][] preOrderIterator() {
+        return new Object[][]{
+                {
+                        new Integer[]{1},
+                        new Integer[]{1},
+                        "1, ",
+                },
+                {
+                        new Integer[]{2, 1},
+                        new Integer[]{1, 2},
+                        "2, 1, ",
+                },
+                {
+                        new Integer[]{5, 3, 2, 1, 4, 6, 7},
+                        new Integer[]{1, 2, 3, 4, 5, 6, 7},
+                        "5, 3, 2, 1, 4, 6, 7, ",
+                },
+        };
+    }
+
+    @Test(dataProvider = PRE_ORDER_ITERATOR)
+    public void preOrderIterator(Integer[] pre, Integer[] in, String expected) throws Exception {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(byteArrayOutputStream);
+        System.setOut(printStream);
+
+        Node2<Integer> root = Tree2.treeFromPreOrderInOrder(pre, in);
+
+        Iterator<Integer> itr = root.preOrderIterator();
+        while (itr.hasNext()) {
+            Integer next = itr.next();
+            System.out.print(next + ", ");
+        }
+
+        Assert.assertEquals(byteArrayOutputStream.toString(), expected);
+    }
 }
