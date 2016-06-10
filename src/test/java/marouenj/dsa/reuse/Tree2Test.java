@@ -299,6 +299,27 @@ public class Tree2Test {
         Assert.assertEquals(byteArrayOutputStream.toString(), "2, 4, 5, 3, 1, 6, 8, 7, 10, 13, 15, 14, 16, 12, 17, 11, 18, 9, ");
     }
 
+    private final String SAME_IN_ORDER = "sameInOrder";
+
+    @DataProvider(name = SAME_IN_ORDER)
+    public Object[][] sameInOrder() {
+        return new Object[][]{
+                {
+                        new Integer[]{1, 2, 3},
+                        new Integer[]{1, 2, 3},
+                        new Integer[]{2, 1, 3}
+                },
+        };
+    }
+
+    @Test(dataProvider = SAME_IN_ORDER)
+    public void sameInOrder(Integer[] in, Integer[] pre1, Integer[] pre2) throws Exception {
+        Node2<Integer> root1 = Tree2.treeFromPreOrderInOrder(pre1, in);
+        Node2<Integer> root2 = Tree2.treeFromPreOrderInOrder(pre2, in);
+
+        Assert.assertTrue(Tree2.sameInOrder(root1, root2));
+    }
+
     @Test
     public void isSymmetric_null() {
         Node2<Integer> root = null;
@@ -511,16 +532,5 @@ public class Tree2Test {
         Assert.assertEquals(Tree2.inOrderKthNode(withCount, 11).getKey(), new Integer(11));
         Assert.assertEquals(Tree2.inOrderKthNode(withCount, 12).getKey(), new Integer(12));
         Assert.assertEquals(Tree2.inOrderKthNode(withCount, 13).getKey(), new Integer(13));
-    }
-
-    @Test
-    public void sameInOrder_1() throws Exception {
-        Integer[] in = new Integer[]{1, 2, 3};
-        Integer[] pre1 = new Integer[]{1, 2, 3};
-        Integer[] pre2 = new Integer[]{2, 1, 3};
-        Node2<Integer> root1 = Tree2.treeFromPreOrderInOrder(in, pre1);
-        Node2<Integer> root2 = Tree2.treeFromPreOrderInOrder(in, pre2);
-
-        Assert.assertTrue(Tree2.sameInOrder(root1, root2));
     }
 }
