@@ -6,10 +6,15 @@ import java.util.Stack;
 
 public class Tree2 {
 
-	/*
-     * serialization/deserialization
-	 */
-
+    /**
+     * Deserialize a tree from pre-order and in-order traversals
+     *
+     * @param pre Serialized pre-order traversal
+     * @param in  Serialized in-order traversal
+     * @param <A> Key type
+     * @return Root ${Node2}
+     * @throws Exception Invalid input
+     */
     public static <A extends Comparable<A>> Node2<A> treeFromPreOrderInOrder(A[] pre, A[] in) throws Exception {
         if (pre == null || in == null || pre.length != in.length || pre.length == 0) {
             throw new Exception("Invalid input");
@@ -36,10 +41,13 @@ public class Tree2 {
         return n;
     }
 
-	/*
-     * balance
-	 */
-
+    /**
+     * Check if a binary tree is balanced
+     *
+     * @param n   Root ${Node2} of the tree
+     * @param <A> Key type
+     * @return True if the tree is balanced
+     */
     public static <A extends Comparable<A>> boolean isBalanced(Node2<A> n) {
         return isBalancedRec(n) != -1;
     }
