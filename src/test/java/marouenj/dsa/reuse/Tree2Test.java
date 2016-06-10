@@ -340,6 +340,11 @@ public class Tree2Test {
         Assert.assertEquals(Tree2.isSymmetricRec(root), expected);
     }
 
+    @Test(dataProvider = IS_SYMMETRIC)
+    public void isSymmetric(Node2<Integer> root, boolean expected) {
+        Assert.assertEquals(Tree2.isSymmetric(root), expected);
+    }
+
     @Test
     public void lca_null() {
         Assert.assertEquals(Tree2.lca(null, new Node2<Integer>(1), new Node2<Integer>(2)), null);

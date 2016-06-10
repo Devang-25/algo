@@ -284,6 +284,46 @@ public class Tree2 {
         return false;
     }
 
+    /**
+     * Check if a tree is symmetric
+     * This solution is non recursive
+     *
+     * @param n   Root
+     * @param <A> Key type
+     * @return True if tree is symmetric
+     */
+    public static <A extends Comparable<A>> boolean isSymmetric(Node2<A> n) {
+        if (n == null) {
+            return true;
+        }
+
+        Node2<A> l = n.getLeft();
+        Node2<A> r = n.getRight();
+
+        if (l == null && r == null) {
+            return true;
+        }
+
+        if (l != null && r != null) {
+            Iterator<A> itrL = l.inOrderIterator();
+            Iterator<A> itrR = r.inOrderIterator();
+
+            while (itrL.hasNext() && itrR.hasNext()) {
+                if (itrL.next().compareTo(itrR.next()) != 0) {
+                    return false;
+                }
+            }
+
+            if (itrL.hasNext() || itrR.hasNext()) {
+                return false;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
 	/*
      * lca
 	 */
