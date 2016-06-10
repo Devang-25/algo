@@ -20,10 +20,10 @@ public class Tree2 {
             throw new Exception("Invalid input");
         }
 
-        return treeFromPreOrderInOrderRec(pre, 0, in, 0, in.length - 1);
+        return treeFromPreOrderInOrderHelper(pre, 0, in, 0, in.length - 1);
     }
 
-    private static <A extends Comparable<A>> Node2<A> treeFromPreOrderInOrderRec(A[] pre, int pre_lo, A[] in, int in_lo, int in_hi) throws Exception {
+    private static <A extends Comparable<A>> Node2<A> treeFromPreOrderInOrderHelper(A[] pre, int pre_lo, A[] in, int in_lo, int in_hi) throws Exception {
         if (in_lo > in_hi) {
             return null;
         }
@@ -35,8 +35,8 @@ public class Tree2 {
             throw new Exception("Key not found");
         }
 
-        n.setLeft(treeFromPreOrderInOrderRec(pre, pre_lo + 1, in, in_lo, idx - 1));
-        n.setRight(treeFromPreOrderInOrderRec(pre, pre_lo + (idx - in_lo) + 1, in, idx + 1, in_hi));
+        n.setLeft(treeFromPreOrderInOrderHelper(pre, pre_lo + 1, in, in_lo, idx - 1));
+        n.setRight(treeFromPreOrderInOrderHelper(pre, pre_lo + (idx - in_lo) + 1, in, idx + 1, in_hi));
 
         return n;
     }
@@ -49,21 +49,21 @@ public class Tree2 {
      * @return True if the tree is balanced
      */
     public static <A extends Comparable<A>> boolean isBalanced(Node2<A> n) {
-        return isBalancedRec(n) != -1;
+        return isBalancedHelper(n) != -1;
     }
 
-    private static <A extends Comparable<A>> int isBalancedRec(Node2<A> n) {
+    private static <A extends Comparable<A>> int isBalancedHelper(Node2<A> n) {
         // base case
         if (n == null) {
             return 0;
         }
 
-        int l = isBalancedRec(n.getLeft());
+        int l = isBalancedHelper(n.getLeft());
         if (l == -1) {
             return -1;
         }
 
-        int r = isBalancedRec(n.getRight());
+        int r = isBalancedHelper(n.getRight());
         if (r == -1) {
             return -1;
         }
