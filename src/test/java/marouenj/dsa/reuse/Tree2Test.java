@@ -336,8 +336,8 @@ public class Tree2Test {
     }
 
     @Test(dataProvider = IS_SYMMETRIC)
-    public void isSymmetric(Node2<Integer> root, boolean expected) {
-        Assert.assertEquals(Tree2.isSymmetric(root), expected);
+    public void isSymmetricRec(Node2<Integer> root, boolean expected) {
+        Assert.assertEquals(Tree2.isSymmetricRec(root), expected);
     }
 
     @Test

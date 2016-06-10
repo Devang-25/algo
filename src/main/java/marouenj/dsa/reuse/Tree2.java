@@ -258,19 +258,19 @@ public class Tree2 {
      * Check if a tree is symmetric
      * The solution is recursive
      *
-     * @param n Root
+     * @param n   Root
      * @param <A> Key type
      * @return True if tree is symmetric
      */
-    public static <A extends Comparable<A>> boolean isSymmetric(Node2<A> n) {
+    public static <A extends Comparable<A>> boolean isSymmetricRec(Node2<A> n) {
         if (n == null) {
             return true;
         }
 
-        return isSymmetric(n.getLeft(), n.getRight());
+        return isSymmetricRecHelper(n.getLeft(), n.getRight());
     }
 
-    private static <A extends Comparable<A>> boolean isSymmetric(Node2<A> l, Node2<A> r) {
+    private static <A extends Comparable<A>> boolean isSymmetricRecHelper(Node2<A> l, Node2<A> r) {
         if (l == null && r == null) {
             return true;
         }
@@ -280,8 +280,8 @@ public class Tree2 {
         }
 
         return l.getKey().equals(r.getKey())
-                && isSymmetric(l.getLeft(), r.getRight())
-                && isSymmetric(l.getRight(), r.getLeft());
+                && isSymmetricRecHelper(l.getLeft(), r.getRight())
+                && isSymmetricRecHelper(l.getRight(), r.getLeft());
     }
 
 	/*
