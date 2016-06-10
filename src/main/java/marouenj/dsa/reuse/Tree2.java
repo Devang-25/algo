@@ -275,13 +275,13 @@ public class Tree2 {
             return true;
         }
 
-        if ((l != null && r == null) || (l == null && r != null)) {
-            return false;
+        if (l != null && r != null) {
+            return l.getKey().equals(r.getKey())
+                    && isSymmetricRecHelper(l.getLeft(), r.getRight())
+                    && isSymmetricRecHelper(l.getRight(), r.getLeft());
         }
 
-        return l.getKey().equals(r.getKey())
-                && isSymmetricRecHelper(l.getLeft(), r.getRight())
-                && isSymmetricRecHelper(l.getRight(), r.getLeft());
+        return false;
     }
 
 	/*
