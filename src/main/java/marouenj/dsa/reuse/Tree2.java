@@ -254,10 +254,14 @@ public class Tree2 {
         return false;
     }
 
-	/*
-     * symmetry
-	 */
-
+    /**
+     * Check if a tree is symmetric
+     * The solution is recursive
+     *
+     * @param n Root
+     * @param <A> Key type
+     * @return True if tree is symmetric
+     */
     public static <A extends Comparable<A>> boolean isSymmetric(Node2<A> n) {
         if (n == null) {
             return true;
