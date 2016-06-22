@@ -36,13 +36,16 @@ public class SearchTree2 {
         return isSearchTree2Helper(n.getLeft(), min, n.getKey()) && isSearchTree2Helper(n.getRight(), n.getKey(), max);
     }
 
-	/*
-     * search
-	 */
-
+    /**
+     * Retrieve the min value in a BST
+     *
+     * @param n   Root
+     * @param <A> Key type
+     * @return Min value
+     */
     public static <A extends Comparable<A>> Node2<A> min(Node2<A> n) {
         if (n == null) {
-            return null;
+            throw new NullPointerException();
         }
 
         while (n.getLeft() != null) {
@@ -52,6 +55,13 @@ public class SearchTree2 {
         return n;
     }
 
+    /**
+     * Retrieve the max value in a BST
+     *
+     * @param n   Root
+     * @param <A> Key type
+     * @return Max value
+     */
     public static <A extends Comparable<A>> Node2<A> max(Node2<A> n) {
         if (n == null) {
             return null;
@@ -64,19 +74,27 @@ public class SearchTree2 {
         return n;
     }
 
+    /**
+     * Retrieve the node holding the searched for value
+     *
+     * @param n   Root
+     * @param key Key to look up
+     * @param <A> Max value
+     * @return Node identified by 'key'
+     */
     public static <A extends Comparable<A>> Node2<A> get(Node2<A> n, A key) {
         if (n == null || key == null) {
-            return null;
+            throw new NullPointerException();
         }
 
         while (n != null) {
-            A curr = n.getKey();
+            int c = n.getKey().compareTo(key);
 
-            if (curr.compareTo(key) == 0) {
+            if (c == 0) {
                 return n;
             }
 
-            if (curr.compareTo(key) > 0) {
+            if (c > 0) {
                 n = n.getLeft();
             } else {
                 n = n.getRight();
@@ -336,9 +354,9 @@ public class SearchTree2 {
             }
         }
     }
-	
+
 	/*
-	 * to linked list
+     * to linked list
 	 */
 
     public static <K extends Comparable<K>> Node2<K> toLinkedList(Node2<K> n) {
