@@ -6,19 +6,24 @@ import java.util.Stack;
 
 public class SearchTree2 {
 
-	/*
-     * is*
-	 */
-
+    /**
+     * Check if a binary tree is a binary search tree
+     *
+     * @param n   Root
+     * @param min Minimal value as determined by the {@link java.util.Comparator}
+     * @param max Maximal value as determined by the {@link java.util.Comparator}
+     * @param <A> Key type
+     * @return True if tree is BST
+     */
     public static <A extends Comparable<A>> boolean isSearchTree2(Node2<A> n, A min, A max) {
         if (min == null || max == null) {
-            throw new RuntimeException("null boundary element(s)");
+            throw new NullPointerException();
         }
 
-        return isSearchTree2Rec(n, min, max);
+        return isSearchTree2Helper(n, min, max);
     }
 
-    private static <A extends Comparable<A>> boolean isSearchTree2Rec(Node2<A> n, A min, A max) {
+    private static <A extends Comparable<A>> boolean isSearchTree2Helper(Node2<A> n, A min, A max) {
         if (n == null) {
             return true;
         }
@@ -28,11 +33,11 @@ public class SearchTree2 {
             return false;
         }
 
-        return isSearchTree2Rec(n.getLeft(), min, n.getKey()) && isSearchTree2Rec(n.getRight(), n.getKey(), max);
+        return isSearchTree2Helper(n.getLeft(), min, n.getKey()) && isSearchTree2Helper(n.getRight(), n.getKey(), max);
     }
 
 	/*
-	 * search
+     * search
 	 */
 
     public static <A extends Comparable<A>> Node2<A> min(Node2<A> n) {
@@ -254,7 +259,7 @@ public class SearchTree2 {
     }
 
 	/*
-	 * set
+     * set
 	 */
 
     public static <A extends Comparable<A>> boolean insert(Node2<A> n, A key) {
